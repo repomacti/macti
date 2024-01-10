@@ -66,7 +66,6 @@ def init_course_nbgrader(c_name, home, path_c_name_nbg):
 os.system('clear')
 
 line_len = 40
-
 print()
 print(Fore.WHITE + Back.GREEN + line_len*'-')
 print(Fore.WHITE + Back.GREEN + '   MACTI: Configuración con ' + Style.BRIGHT + 'NBGRADER    ' + Style.RESET_ALL)

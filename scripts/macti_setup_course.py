@@ -1,4 +1,5 @@
-import os, shutil
+import os, shutil, pkg_resources
+
 from colorama import Fore, Back, Style
 
 def print_macti_info(msg):
@@ -18,7 +19,8 @@ c_name = input(' Nombre del curso : ')
 print()
 
 path = os.getcwd()
-paths = [c_name + '/Tema1/', 
+paths = [c_name + '/',
+         c_name + '/Tema1/', 
          c_name + '/.ans/',
         ]
 
@@ -29,7 +31,7 @@ for p in paths:
     else:
         print_macti_info('El directorio : {} ya existe  '.format(p))
 
-print_macti_info('Cambiando al directorio : {}  '.format(path + '/' + c_name))
+print_macti_info('Cambiando al directorio : {}  '.format('/' + c_name + '/'))
 os.chdir(c_name)
 
 print_macti_info('Iniciando el repositorio  ')
@@ -46,6 +48,25 @@ print_macti_info('Creando ' + Style.BRIGHT + '.gitignore ')
 with open(".gitignore", "w") as f:
     f.writelines(lines)
 
+filenames = []
+filenames.append('data/resources/plantilla.ipynb')
+filenames.append('data/resources/q1_plantilla.ipynb')
+
+for i in range(2):
+    stream = pkg_resources.resource_stream('macti', filenames[i])
+    print_macti_info('Copiando {} al directorio {}  '.format(stream.name.split(sep='/')[-1], paths[1]))
+    shutil.copy2(stream.name, path + '/' + paths[1])
+
+filenames = []
+filenames.append('data/resources/assignments_creation.csv')
+filenames.append('data/resources/assignments_update.csv')
+filenames.append('data/resources/macti_nbg_qs.py')
+
+for i in range(3):
+    stream = pkg_resources.resource_stream('macti', filenames[i])
+    print_macti_info('Copiando {} al directorio {}  '.format(stream.name.split(sep='/')[-1], paths[0]))
+    shutil.copy2(stream.name, path + '/' + paths[0])
+    
 print_macti_info('Estado del repositorio  (git status)')
 os.system('git status')
 print_macti_info('Actualizando los cambios (git add .) ')
@@ -57,8 +78,4 @@ print_macti_info('Estado del repositorio  (git status)')
 os.system('git status')
 
 
-#for i in range(1,4):
-#    filename = '/data/Plantillas/plantilla0' + str(i) + '.ipynb'
-#    stream = pkg_resources.resource_stream('macti', filename)
-#    print('Copiando {} al directorio {}'.format(stream.name.split(sep='/')[-1], paths[0]))
-#    shutil.copy2(stream.name, paths[0])
+
