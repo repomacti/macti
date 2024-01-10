@@ -39,13 +39,14 @@ def init_course_nbgrader(c_name, home, path_c_name_nbg):
     lines.append('c.CourseDirectory.root = "' + path_c_name_nbg + '" \n')
 
     # Escribimos el archivo
-    with open(path_c_name_nbg + "nbgrader_config.py", "w") as f:
+    print('HELLO ', path_c_name_nbg)
+    with open(path_c_name_nbg + "/nbgrader_config.py", "w") as f:
         f.writelines(lines)
 
     print_macti_info('Copiando el archivo ' + Style.BRIGHT + 'nbgrader_config.py ' + Style.NORMAL + 'a' + Style.BRIGHT + ' {} '.format(home + '.jupyter/  '))
     
-    # Copiamos el archvio nbgrader_config.py al $HOME/.jupyter/
-    shutil.copy2(path_c_name_nbg + "nbgrader_config.py", home + '.jupyter/')
+    # Copiamos el archivio nbgrader_config.py al $HOME/.jupyter/
+    shutil.copy2(path_c_name_nbg + "/nbgrader_config.py", home + '.jupyter/')
 
     # Eliminar o mantener el ejemplo ps1 creado por NBGRADER.
     eliminar = input('\n El siguiente subdirectorio contiene un ejemplo de uso de NBGRADER: \n' + Style.BRIGHT + ' {}/source/ps1/ '.format(path_c_name_nbg) + Style.RESET_ALL + '\n ¿deseas eliminarlo? Si [S], No [N] ' + Style.RESET_ALL)
@@ -87,7 +88,7 @@ print_macti_info(' Curso: {}'.format(c_name))
 print_macti_info(' Directorio actual: ' + Style.BRIGHT + '{}  '.format(path_c_name))
     
 # Subirectorio dentro del curso para configuración con NBGRADER
-c_name_nbg = '/nbg/GeoMaC'
+c_name_nbg = '/nbg/' + c_name
 
 # Path absoluto al directorio nbg
 path_c_name_nbg = path_c_name + c_name_nbg
@@ -174,3 +175,12 @@ for topic in topic_list:
             # Se copian los archivos
             shutil.copy2(src, dst)
 
+    # Se copian los archivos de respuestas y de retroalimentación
+    path_ans_src = path_c_name + '/.ans/' + topic
+    path_ans_dst = '/usr/local/share/nbgrader/exchange/' + c_name + '/.ans/' + topic
+    print(path_ans_src)
+    print(path_ans_dst)
+    print_macti_info('Copiando respuestas y retroalimentación de los quizzes: ' + Style.BRIGHT + topic)
+    shutil.copytree(path_ans_src, path_ans_dst, dirs_exist_ok=True)
+    print()
+    
