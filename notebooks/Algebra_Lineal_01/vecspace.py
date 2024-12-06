@@ -1,8 +1,8 @@
 import numpy as np
 import math
 import ipywidgets as wd
-#import macti.visual as mvis
-import visual as mvis
+import macti.visual as mvis
+#import visual as mvis
 
 def saxpy(α, x, y, w):
 #    αxpy = α * x + y
