@@ -114,7 +114,7 @@ def numericalDer(f, x0, h, aprox = 'All'):
 
     ancho_linea = 2.0
     
-    fig = plt.figure(figsize=(10,5))
+    fig = plt.figure(figsize=(10,4))
     fig.suptitle('EF = {:10.4e}, EB = {:10.4e}, EC = {:10.4e}'.format(ef,eb,ec))
     
     ax1 = plt.subplot(1,2,1)
@@ -142,7 +142,7 @@ def numericalDer(f, x0, h, aprox = 'All'):
         plt.scatter(x0-h, evalf(x0-h), facecolor ='w', edgecolor='k', zorder=10)
         plt.plot(xl, lc, lw = ancho_linea, label="f' = Centered")
         
-    plt.legend(loc=(-1.0,0.5))
+    plt.legend(ncol=2, loc=(0.0,-0.30))
 
 
     ax2 = plt.subplot(1,2,2)
