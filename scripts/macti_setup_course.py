@@ -16,9 +16,9 @@ def make_dirs(paths):
     
 def copy_files(filenames, abspath, path):
     for f in filenames:
-        stream = pkg_resources.resource_stream('macti', f)
+        stream = pkg_resources.resource_stream('macti', os.path.join("resources", f))
         print_macti_info('Copiando {} al directorio {}  '.format(stream.name.split(sep='/')[-1], path))
-        shutil.copy2(stream.name, abspath + '/' + path)
+        shutil.copy2(stream.name, os.path.join(abspath, path))
 
 # ---------------------------
 if __name__ == "__main__":
@@ -35,16 +35,16 @@ if __name__ == "__main__":
     c_name = input(' Nombre del curso : ')
     print()
 
-    # Creación de directorios
+    # --- Creación de directorios ---
     abspath = os.getcwd()
-    paths = [c_name + '/',
-             c_name + '/Tema1/', 
-             c_name + '/.ans/',
-             c_name + '/resources/'
+    paths = [c_name,
+             os.path.join(c_name, 'Tema1'), 
+             os.path.join(c_name, '.ans'), 
+             os.path.join(c_name, 'resources'), 
             ]
     make_dirs(paths)
 
-    # Iniciar el repositorio local con git
+    # --- Iniciar el repositorio local con git ---
     print_macti_info('Cambiando al directorio : {}  '.format('/' + c_name + '/'))
     os.chdir(c_name)
     
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     print_macti_info('Cambiando el nombre de la rama principal a main')
     os.system('git branch -M main')
 
-    # Crear el archivo .gitignore
+    # --- Crear el archivo .gitignore ---
     lines = ["# NBGRADER \n",
              "nbg/ \n\n",
              "# QUIZ \n",
@@ -71,25 +71,27 @@ if __name__ == "__main__":
     with open(".gitignore", "w") as f:
         f.writelines(lines)
 
-    # Copiar archivos
-    filenames = ['data/resources/plantilla.ipynb',
-                 'data/resources/q1_plantilla.ipynb']
+    # --- Copiar archivos ---
+    filenames = ['plantilla.ipynb', 
+                 'q1_plantilla.ipynb']
     copy_files(filenames, abspath, paths[1])
     
-    filenames = ['data/resources/.nbgex',
-                 'data/resources/assignments_creation.csv',
-                 'data/resources/assignments_update.csv',
-                 'data/resources/macti_nbg_qs.py']
+    filenames = ['nbgex', 
+                 'assignments_creation.csv', 
+                 'assignments_update.csv', 
+                 'macti_nbg_qs.py']
     copy_files(filenames, abspath, paths[0])
+    os.rename(os.path.join(abspath, paths[0],'nbgex'), 
+              os.path.join(abspath, paths[0],'.nbgex'))
 
-    filenames = ['data/resources/calificador.ipynb',
-                 'data/resources/preproc_gb.ipynb',
-                 'data/resources/test_evaluation.ipynb',
-                 'data/resources/test_visual.ipynb',
-                 'data/resources/interactivo_test.ipynb']
+    filenames = ['calificador.ipynb',
+                 'preproc_gb.ipynb',
+                 'test_evaluation.ipynb',
+                 'test_visual.ipynb',
+                 'interactivo_test.ipynb']
     copy_files(filenames, abspath, paths[3])
 
-    # Actualizar el repositorio
+    # --- Actualizar el repositorio ---
     print_macti_info('Estado del repositorio  (git status)')
     os.system('git status')
     print_macti_info('Actualizando los cambios (git add .) ')
