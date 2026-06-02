@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "macti"
+version = "1.0.1"
+description = "Biblioteca para evaluación de Jupyter Notebooks, Visualización de datos orientada a la enseñanza en nivel licenciatura."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Luis Miguel de la Cruz Salas", email = "luiggi@igeofisica.unam.mx" }
+]
+dependencies = [
+  "pyarrow",
+  "sympy",
+  "nbgrader",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/macti"]
+
