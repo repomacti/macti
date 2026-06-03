@@ -1,0 +1,41 @@
+{
+    "answer_not_saved": "ANSWER NOT SAVED. Value '{enum}' cannot be used as an exercise identifier.",
+
+    "creating_directory": "Creating directory: {path}",
+
+    "directory_exists": "Directory already exists: {path}",
+
+    "answers_saved": "Answers and feedback saved.",
+
+    "answer_not_found": "ANSWER NOT FOUND. '{enum}' cannot be used as an exercise identifier.",
+
+    "correct_result": "{enum} | Your result is correct.",
+
+    "correct_option": "{enum} | Your answer: {ans}, is correct.",
+
+    "correct_expression": "is correct.",
+
+    "incorrect_option": "{enum} | Your answer: {ans}, is INCORRECT.",
+
+    "incorrect_expression": "is NOT correct.",
+
+    "calculation_error": "{enum} | An error occurred in your calculations.",
+
+    "hint": "Hint:",
+
+    "invalid_answer": "{enum} | Invalid answer: {ans} has type {type}",
+
+    "invalid_answer_no_enum": "Invalid answer: {ans} has type {type}",
+
+    "array_length_error": "Correct length={correct}\\nYour length={user}",
+
+    "difference_positions": "Different positions: {positions}",
+
+    "correct_value": "Correct value : {correct}",
+
+    "computed_value": "Computed value : {user}",
+
+    "correct_keys": "Correct keys : {correct}",
+
+    "computed_keys": "Computed keys : {user}"
+}

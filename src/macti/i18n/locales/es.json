@@ -1,0 +1,41 @@
+{
+    "answer_not_saved": "RESPUESTA NO ALMACENADA. No está permitido usar el valor '{enum}' para identificar un ejercicio.",
+
+    "creating_directory": "Creando el directorio: {path}",
+
+    "directory_exists": "El directorio: {path} ya existe",
+
+    "answers_saved": "Respuestas y retroalimentación almacenadas.",
+
+    "answer_not_found": "NO EXISTE LA RESPUESTA. No está permitido usar '{enum}' para identificar un ejercicio.",
+
+    "correct_result": "{enum} | Tu resultado es correcto.",
+
+    "correct_option": "{enum} | Tu respuesta: {ans}, es correcta.",
+
+    "correct_expression": "es correcta.",
+
+    "incorrect_option": "{enum} | Tu respuesta: {ans}, es INCORRECTA.",
+
+    "incorrect_expression": "NO es correcta.",
+
+    "calculation_error": "{enum} | Ocurrió un error en tus cálculos.",
+
+    "hint": "Pista:",
+
+    "invalid_answer": "{enum} | Respuesta inválida: {ans} es de tipo {type}",
+
+    "invalid_answer_no_enum": "Respuesta inválida: {ans} es de tipo {type}",
+
+    "array_length_error": "Longitud correcta={correct}\\nLongitud de tu respuesta={user}",
+
+    "difference_positions": "Lugares donde hay diferencia: {positions}",
+
+    "correct_value": "Valor correcto : {correct}",
+
+    "computed_value": "Valor calculado : {user}",
+
+    "correct_keys": "Keys correctas : {correct}",
+
+    "computed_keys": "Keys calculadas : {user}"
+}
